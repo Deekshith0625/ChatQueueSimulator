@@ -6,6 +6,11 @@ class chatQueue{
         string username;
 };
 
+class node{
+    private:
+        int data;
+};
+
 int main(){
     cout<<"DS project"<<endl;
 }
