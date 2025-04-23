@@ -5,8 +5,8 @@ class Agent{
         int ID;
         node* next;
     public:
-        node(int id){
+        Agent(int id){
             ID = id;
             next = NULL;
-        }
+         }
 };
