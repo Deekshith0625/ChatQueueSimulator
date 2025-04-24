@@ -9,6 +9,11 @@ class chatQueue{
 class node{
     private:
         int data;
+        node*next;
+    public:
+    node(){
+        next=NULL;
+    }
 };
 
 int main(){
