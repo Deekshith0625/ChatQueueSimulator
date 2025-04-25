@@ -2,12 +2,11 @@
 #include<string>
 using namespace std;
 class node{
-    private:
-        string userName;
-        node* next;
     public:
-        node(string name){
-            userName = name;
+        int userID;
+        node* next;
+        node(int id){
+            userID = id;
             next = NULL;
         }
-}
+};
