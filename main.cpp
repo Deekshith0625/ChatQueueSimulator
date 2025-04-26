@@ -5,6 +5,8 @@ class chatQueue{
     private:
         string username;
         int userid;
+    public:
+        chatQueue();
 };
 
 class node{
