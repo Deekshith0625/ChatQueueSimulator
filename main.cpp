@@ -23,4 +23,14 @@ class node{
 
 int main(){
     cout<<"DS project"<<endl;
+    int choice;
+    while(1){
+        cin>>choice;
+        switch(choice){
+            case 1:
+                cout<<"In agent"<<endl;
+                break;
+                return 0;
+        }
+    }
 }
