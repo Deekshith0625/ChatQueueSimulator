@@ -48,7 +48,7 @@ class Queue {
             rear->next = newUser;
             rear = newUser;
         }
-        cout << "User " << Id << " joined the queue.\n";
+        cout << "User : " << Id << " joined the queue.\n";
     }
     void Queue::serveCompleted(vector<Agent>& agents) {
         if (front == NULL) {
@@ -63,7 +63,7 @@ class Queue {
     
                 agent.isAvailable = false; 
     
-                cout << "Agent " << agent.ID << " is now serving User " << temp->userID << "\n";
+                cout << "Agent : " << agent.ID << " is now serving User " << temp->userID << "\n";
                 servingList.push_back({agent.ID, temp->userID});
 
                 delete temp;
@@ -86,9 +86,9 @@ class Queue {
                 }
     
                 servingList.erase(it);
-                cout << "User " << userId << " has been released. Agent " << agentId << " is now available.\n";
+                cout << "User : " << userId << " has been released. Agent " << agentId << " is now available.\n";
                 return;
             }
         }
-        cout << "User ID " << userId << " not found in serving list.\n";
+        cout << "User ID : " << userId << " not found in serving list.\n";
     }
