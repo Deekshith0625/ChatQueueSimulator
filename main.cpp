@@ -39,8 +39,14 @@ class Queue {
         vector<pair<int,int>> servingList;
         void showServingList();
         void releaseUser(vector<Agent>& agents, int userId);
+        bool isUserAlreadyExist(int userId);
     };
     void Queue::joinQueue(int Id) {
+        if (isUserAlreadyExist(Id)) {
+            cout << "Error: User ID " << Id << " is already in the queue or being served.\n";
+            return;
+        }
+        
         node* newUser = new node(Id);
         if (rear == nullptr) {
             front = rear = newUser;
@@ -72,6 +78,26 @@ class Queue {
         }
         cout << "No available agents at the moment. Please wait.\n";
     }
+    bool Queue::isUserAlreadyExist(int userId) {
+        // Check queue
+        node* temp = front;
+        while (temp != nullptr) {
+            if (temp->userID == userId) {
+                return true;
+            }
+            temp = temp->next;
+        }
+    
+        // Check serving list
+        for (const auto& pair : servingList) {
+            if (pair.second == userId) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
     void Queue:: releaseUser(vector<Agent>& agents,  int userId) {
         for (auto it = servingList.begin(); it != servingList.end(); ++it) {
             if (it->second == userId) {
