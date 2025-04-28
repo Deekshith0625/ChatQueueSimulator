@@ -8,5 +8,6 @@ class Agent{
         Agent(int id){
             ID = id;
             next = NULL;
+            
          }
 };
