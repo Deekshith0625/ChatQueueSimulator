@@ -10,4 +10,5 @@ class node{
             userName = name;
             next = NULL;
         }
-}
+        ~node(){}
+};
