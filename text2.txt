@@ -4,3 +4,4 @@ third day working on project
 4th day half code pushed
 remaing code deekshith
 edge cases tested
+destructor is added
