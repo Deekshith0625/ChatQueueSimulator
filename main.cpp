@@ -118,3 +118,113 @@ class Queue {
         }
         cout << "User ID : " << userId << " not found in serving list.\n";
     }
+
+    void Queue::showQueue() {
+        if (front == NULL) {
+            cout << "Queue is empty.\n";
+            return;
+        }
+    
+        cout << "Current Queue: ";
+        node* temp = front;
+        while (temp != nullptr) {
+            cout << temp->userID << " ";
+            temp = temp->next;
+        }
+       cout << "\n";
+    }
+
+    void Queue:: showServingList() {
+        if (servingList.empty()) {
+            cout << "No agents are currently serving users.\n";
+            return;
+        }
+        cout << "Currently Serving:\n";
+        for (const auto& pair : servingList) {
+            cout << "Agent " << pair.first << " is serving User " << pair.second << "\n";
+        }
+    }
+    
+    
+    
+ 
+
+void releaseAgent(vector<Agent>& agents, int agentId) {
+    for (auto& agent : agents) {
+        if (agent.ID == agentId) {
+            if (!agent.isAvailable) {
+                agent.isAvailable = true;
+               cout << "Agent " << agent.ID<< " is now available.\n";
+            } else {
+                cout << "Agent " << agent.ID << " is already available.\n";
+            }
+            return;
+        }
+    }
+    cout << "Agent ID not found.\n";
+}
+
+
+
+int main() {
+    Queue chatQueue;
+    int choice, userId;
+    int numAgents;
+
+    cout << "Enter number of agents: ";
+   cin >> numAgents;
+
+    vector<Agent> agents;
+    for (int i = 1; i <= numAgents; ++i) {
+        agents.push_back(Agent(i));
+    }
+
+    while (true) {
+        cout << "\n--- Chat Queue Menu ---\n";
+        cout << "1. New user joins\n";
+        cout << "2. Serve next user\n";
+       cout << "3. Release agent\n";
+        cout << "4. Show queue\n";
+         cout<<"5.show serving list\n";
+        cout<<"6.Release user\n";
+        cout<<"7.EXIT";
+       cout << "Enter choice: ";
+       
+      cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout<<"Enter User ID to join Queue :";
+                cin>>userId;
+                chatQueue.joinQueue(userId);
+                break;
+            case 2:
+                chatQueue.serveCompleted(agents);
+                break;
+            case 3: {
+                int Id;
+                cout << "Enter Agent ID to release: ";
+                cin >> Id;
+                releaseAgent(agents, Id);
+                break;
+            }
+            case 4:
+                chatQueue.showQueue();
+                break;
+            case 5:
+                chatQueue.showServingList();
+                break;
+            case 6:
+                int user;
+                cout<<"enter the user ID to release";
+                cin>>user;
+                chatQueue.releaseUser(agents,user);
+                break;
+            case 7:
+                return 0;
+                break;
+            default:
+                cout << "Invalid choice.\n";
+        }
+    }
+}
