@@ -10,6 +10,10 @@ class node{
             userID = id;
             next = NULL;
         }
+        ~node(){
+            delete next;
+
+        }
 };
 class Agent{
     public:
@@ -30,8 +34,16 @@ class Queue {
     
     public:
         Queue() {
-            front = nullptr;
-            rear = nullptr;
+            front = NULL;
+            rear = NULL;
+        }
+        ~Queue() {
+            node* current = front;
+            while (current != NULL) {
+                node* nextNode = current->next; 
+                delete current;  
+                current = nextNode;  
+            }
         }
         void joinQueue(int Id);
         void serveCompleted(vector<Agent>& agents);
@@ -48,7 +60,7 @@ class Queue {
         }
         
         node* newUser = new node(Id);
-        if (rear == nullptr) {
+        if (rear == NULL) {
             front = rear = newUser;
         } else {
             rear->next = newUser;
@@ -81,7 +93,7 @@ class Queue {
     bool Queue::isUserAlreadyExist(int userId) {
         // Check queue
         node* temp = front;
-        while (temp != nullptr) {
+        while (temp != NULL) {
             if (temp->userID == userId) {
                 return true;
             }
