@@ -58,7 +58,7 @@ class Queue {
     }
     void Queue::serveCompleted(vector<Agent>& agents) {
         if (front == NULL) {
-            std::cout << "No users in queue.\n";
+            cout << "No users in queue.\n";
             return;
         }
         for (auto& agent : agents) {
