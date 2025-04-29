@@ -187,8 +187,8 @@ int main() {
         cout << "4. Show queue\n";
          cout<<"5.show serving list\n";
         cout<<"6.Release user\n";
-        cout<<"7.EXIT";
-       cout << "Enter choice: ";
+        cout<<"7.EXIT"<<endl;
+       cout <<"Enter choice: "<<endl;
        
       cin >> choice;
 
