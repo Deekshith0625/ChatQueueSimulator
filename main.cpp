@@ -23,6 +23,8 @@ class Agent{
             ID = id;
             isAvailable = true;
          }
+        ~Agent(){}
+        
 };
 
 
