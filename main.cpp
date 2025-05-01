@@ -26,9 +26,6 @@ class Agent{
         ~Agent(){}
         
 };
-
-
-
 class Queue {
     private:
         node* front;
@@ -108,11 +105,9 @@ class Queue {
                 return true;
             }
         }
-    
         return false;
     }
-    
-    void Queue:: releaseUser(vector<Agent>& agents,  int userId) {
+     void Queue:: releaseUser(vector<Agent>& agents,  int userId) {
         for (auto it = servingList.begin(); it != servingList.end(); ++it) {
             if (it->second == userId) {
                 int agentId = it->first;
@@ -124,7 +119,6 @@ class Queue {
                         break;
                     }
                 }
-    
                 servingList.erase(it);
                 cout << "User : " << userId << " has been released. Agent " << agentId << " is now available.\n";
                 return;
@@ -159,10 +153,6 @@ class Queue {
         }
     }
     
-    
-    
- 
-
 void releaseAgent(vector<Agent>& agents, int agentId) {
     for (auto& agent : agents) {
         if (agent.ID == agentId) {
@@ -177,9 +167,6 @@ void releaseAgent(vector<Agent>& agents, int agentId) {
     }
     cout << "Agent ID not found.\n";
 }
-
-
-
 int main() {
     Queue chatQueue;
     int choice, userId;
