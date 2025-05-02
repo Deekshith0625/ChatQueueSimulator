@@ -72,22 +72,28 @@ class Queue {
             cout << "No users in queue.\n";
             return;
         }
+    
+        bool anyServed = false;
+    
         for (auto& agent : agents) {
-            if (agent.isAvailable) {
+            if (agent.isAvailable && front != NULL) {
                 node* temp = front;
                 front = front->next;
                 if (front == NULL) rear = NULL;
     
-                agent.isAvailable = false; 
+                agent.isAvailable = false;
     
                 cout << "Agent : " << agent.ID << " is now serving User " << temp->userID << "\n";
                 servingList.push_back({agent.ID, temp->userID});
-
+    
                 delete temp;
-                return;
+                anyServed = true;
             }
         }
-        cout << "No available agents at the moment. Please wait.\n";
+    
+        if (!anyServed) {
+            cout << "No available agents at the moment. Please wait.\n";
+        }
     }
     bool Queue::isUserAlreadyExist(int userId) {
         // Check queue
