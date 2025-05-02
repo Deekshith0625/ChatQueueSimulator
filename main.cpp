@@ -10,10 +10,10 @@ class node{
             userID = id;
             next = NULL;
         }
-        ~node(){
-            delete next;
+        //~node(){
+          //  delete next;
 
-        }
+        //}
 };
 class Agent{
     public:
